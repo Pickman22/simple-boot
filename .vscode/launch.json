@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug (openocd)",
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/base.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "device": "stm32f302x8",
+            "configFiles": ["interface/stlink.cfg", "target/stm32f3x.cfg"],
+            "svdFile": "./sys/STM32F302.svd"
+        }
+    ]
+}

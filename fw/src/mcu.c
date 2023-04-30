@@ -42,4 +42,9 @@ static void system_clock_config(void)
     .Tim1ClockSelection = RCC_TIM1CLK_HCLK,
   };
   assert(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK);
+
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_USART2_CLK_ENABLE();
 }
+

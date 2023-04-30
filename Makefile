@@ -2,10 +2,12 @@ PROJ_NAME=base
 
 LIBS_DIR=${HOME}/opt
 
-RTOS_DIR=./rtos
-
 SRCS=fw/src/main.c
 SRCS+=fw/src/mcu.c
+SRCS+=fw/src/xmodem.c
+SRCS+=fw/src/uart.c
+SRCS+=fw/src/gpio.c
+SRCS+=fw/src/printf.c
 SRCS+=sys/src/assert.c
 SRCS+=sys/src/system_stm32f3xx.c
 SRCS+=sys/src/startup_stm32f302x8.s
@@ -15,6 +17,7 @@ HAL_SRCS+=hal/src/stm32f3xx_hal.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_cortex.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_rcc.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_rcc_ex.c
+HAL_SRCS+=hal/src/stm32f3xx_hal_uart.c
 
 INC_DIRS+=./sys/inc
 INC_DIRS+=./hw/inc
@@ -79,6 +82,7 @@ HAL_OBJS_OUT=$(addprefix $(BUILD_DIR)/out/,$(notdir $(HAL_OBJS)))
 RTOS_OBJS_OUT=$(addprefix $(BUILD_DIR)/out/,$(notdir $(RTOS_OBJS)))
 
 DEFS=-DSTM32F302x8
+DEFS+=-D__DBG__
 
 $(PROJ_NAME): $(PROJ_NAME).elf
 

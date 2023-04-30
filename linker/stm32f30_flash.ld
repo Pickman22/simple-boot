@@ -44,7 +44,7 @@ _Min_Stack_Size = 0x80; /* required amount of stack */
 /* Spec10000000ify the memory areas */
 MEMORY
 {
-  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 16K
+  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 32K /* Actually has 64K. Plan to only use 16K for boot. Using 32K for debugging. */
   RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 16K
   MEMORY_B1 (rx)  : ORIGIN = 0x60000000, LENGTH = 0K
   CCMRAM (rw)     : ORIGIN = 0x10000000, LENGTH = 8K
