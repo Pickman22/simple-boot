@@ -1,3 +1,4 @@
+#include "stm32f3xx_hal.h"
 #include "mcu.h"
 #include "uart.h"
 #include "gpio.h"
@@ -8,12 +9,11 @@ int main(void)
   mcu_init();
   gpio_init();
   uart_init();
-  printf("system initialized\n\r");
-
+  DBG_DEBUG("system initialzed\n\r");
   while(1) {
-
+    gpio_toggle(gpio_led_e);
+    HAL_Delay(500);
   }
-
   return 0;
 }
 

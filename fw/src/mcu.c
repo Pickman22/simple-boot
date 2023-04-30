@@ -1,7 +1,7 @@
 #include "mcu.h"
 #include "stm32f3xx_hal.h"
 #include "stm32f3xx_hal_rcc_ex.h"
-#include "assert.h"
+#include <assert.h>
 
 static void system_clock_config(void);
 
@@ -26,7 +26,7 @@ static void system_clock_config(void)
     .PLL.PLLSource = RCC_PLLSOURCE_HSE,
     .PLL.PLLMUL = RCC_PLL_MUL9,
   };
-  assert(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK);
+  assert(HAL_RCC_OscConfig(&RCC_OscInitStruct) == HAL_OK);
 
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {
     .ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK|  RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2,
@@ -35,16 +35,17 @@ static void system_clock_config(void)
     .APB1CLKDivider = RCC_HCLK_DIV1,
     .APB2CLKDivider = RCC_HCLK_DIV1,
   };
-  assert(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK);
+  assert(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) == HAL_OK);
 
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {
     .PeriphClockSelection = RCC_PERIPHCLK_TIM1,
     .Tim1ClockSelection = RCC_TIM1CLK_HCLK,
   };
-  assert(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK);
+  assert(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) == HAL_OK);
 
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_USART2_CLK_ENABLE();
+
 }
 

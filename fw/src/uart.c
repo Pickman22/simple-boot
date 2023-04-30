@@ -1,5 +1,5 @@
+#include <assert.h>
 #include "uart.h"
-#include "assert.h"
 #include "stm32f3xx_hal.h"
 #include "dbg.h"
 
@@ -20,8 +20,8 @@ void uart_init(void)
       .Mode = UART_MODE_TX_RX,
     },
   };
-  assert(HAL_UART_Init(&uart_init_conf) != HAL_OK);
-  printf("uart initialized\n\r");
+  assert(HAL_UART_Init(&uart_init_conf) == HAL_OK);
+  DBG_DEBUG("uart initialized\n\r");
 }
 
 void uart_rx(uint8_t* buffer, uint16_t sz)

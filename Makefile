@@ -11,6 +11,7 @@ SRCS+=fw/src/printf.c
 SRCS+=sys/src/assert.c
 SRCS+=sys/src/system_stm32f3xx.c
 SRCS+=sys/src/startup_stm32f302x8.s
+SRCS+=sys/src/stm32f3xx_it.c
 
 HAL_SRCS=hal/src/stm32f3xx_hal_gpio.c
 HAL_SRCS+=hal/src/stm32f3xx_hal.c
@@ -39,7 +40,7 @@ TARGET_FLAGS= \
 	-mfloat-abi=hard \
 
 LIB_FLAGS=$(TARGET_FLAGS) \
-	-Os \
+	-Og \
 	-Wall \
 	-fdata-sections \
 	-ffunction-sections \
@@ -54,7 +55,7 @@ CFLAGS=$(TARGET_FLAGS) \
 	-fno-math-errno \
 
 HFLAGS=$(TARGET_FLAGS) \
-	-Os \
+	-Og \
 	-Wall \
 	-fsingle-precision-constant \
 	-fdata-sections \
@@ -73,13 +74,9 @@ LFLAGS=$(TARGET_FLAGS) \
 
 HAL_OBJS=$(subst .c,.o,$(HAL_SRCS))
 
-RTOS_OBJS=$(subst .c,.o,$(HAL_SRCS))
-
-INCLUDE=$(addprefix -I,$(INC_DIRS))
-
 HAL_OBJS_OUT=$(addprefix $(BUILD_DIR)/out/,$(notdir $(HAL_OBJS)))
 
-RTOS_OBJS_OUT=$(addprefix $(BUILD_DIR)/out/,$(notdir $(RTOS_OBJS)))
+INCLUDE=$(addprefix -I,$(INC_DIRS))
 
 DEFS=-DSTM32F302x8
 DEFS+=-D__DBG__
@@ -89,10 +86,6 @@ $(PROJ_NAME): $(PROJ_NAME).elf
 %.o: %.c
 	$(CC) $(INCLUDE) $(DEFS) -c -o $@ $< $(CFLAGS) $(EXTRA_FLAGS)
 	mkdir -p $(BUILD_DIR)/out && mv $@ $(BUILD_DIR)/out
-
-$(HAL_OBJS): CFLAGS:=$(LIB_FLAGS)
-
-$(RTOS_OBJS):  CFLAGS:=$(LIB_FLAGS)
 
 $(PROJ_NAME).elf: $(SRCS) $(HAL_OBJS) $(RTOS_OBJS)
 	mkdir -p $(BUILD_DIR)

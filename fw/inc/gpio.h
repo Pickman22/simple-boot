@@ -1,6 +1,8 @@
 #ifndef GPIO_H
 #define GPIO_H
 
+#include <stdbool.h>
+
 typedef enum {
   gpio_led_e = 0,
   gpio_uart_rx_e,
@@ -17,7 +19,7 @@ void gpio_clear(gpio_t gpio);
 
 void gpio_toggle(gpio_t gpio);
 
-void gpio_get(gpio_t gpio);
+bool gpio_get(gpio_t gpio);
 
 void gpio_deinit(void);
 
