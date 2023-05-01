@@ -1,5 +1,8 @@
 #include "stm32f3xx_it.h"
 
+extern void uart_isr_cb(void);
+extern void uart_rx_dma_isr_cb(void);
+extern void uart_dma_isr_cb(void);
 extern void HAL_IncTick(void);
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -118,3 +121,35 @@ void EXTI15_10_IRQHandler(void) {}
 /*void PPP_IRQHandler(void)
 {
 }*/
+
+/**
+  * @brief  This function handles UART interrupt request.
+  * @param  None
+  * @retval None
+  */
+void USART2_IRQHandler(void)
+{
+  uart_isr_cb();
+}
+
+/**
+  * @brief  This function handles DMA interrupt request.
+  * @param  None
+  * @retval None
+  */
+void DMA1_Channel7_IRQHandler(void)
+{
+  uart_dma_isr_cb();
+
+}
+
+void DMA1_Channel6_IRQHandler(void)
+{
+  uart_rx_dma_isr_cb();
+}
+
+/**
+  * @brief  This function handles DMA interrupt request.
+  * @param  None
+  * @retval None
+  */

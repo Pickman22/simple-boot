@@ -19,6 +19,8 @@ HAL_SRCS+=hal/src/stm32f3xx_hal_cortex.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_rcc.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_rcc_ex.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_uart.c
+HAL_SRCS+=hal/src/stm32f3xx_hal_uart_ex.c
+HAL_SRCS+=hal/src/stm32f3xx_hal_dma.c
 
 INC_DIRS+=./sys/inc
 INC_DIRS+=./hw/inc
@@ -95,8 +97,6 @@ $(PROJ_NAME).elf: $(SRCS) $(HAL_OBJS) $(RTOS_OBJS)
 	$(SZ) $(BUILD_DIR)/$(PROJ_NAME).elf
 
 hal: $(HAL_OBJS)
-
-rtos: $(RTOS_OBJS)
 
 dump:
 	$(OBJDUMP) -D --source $(BUILD_DIR)/$(PROJ_NAME).elf > $(BUILD_DIR)/$(PROJ_NAME).dump

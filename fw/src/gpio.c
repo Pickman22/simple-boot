@@ -30,9 +30,9 @@ static gpio_config_t gpio_config_table[gpio_num_e] = {
       .init_val = GPIO_PIN_RESET,
       .hal_gpio_port = UART_GPIO_PORT,
       .hal_gpio_config = {
-        .Pin = UART_TX_PIN,
+        .Pin = UART_RX_PIN,
         .Mode = GPIO_MODE_AF_OD,
-        .Pull = GPIO_PULLUP,
+        .Pull = GPIO_PULLDOWN,
         .Speed = GPIO_SPEED_FREQ_HIGH,
         .Alternate = GPIO_AF7_USART2,
       },
@@ -42,8 +42,8 @@ static gpio_config_t gpio_config_table[gpio_num_e] = {
       .hal_gpio_port = UART_GPIO_PORT,
       .hal_gpio_config = {
         .Pin = UART_TX_PIN,
-        .Mode = GPIO_MODE_AF_OD,
-        .Pull = GPIO_PULLUP,
+        .Mode = GPIO_MODE_AF_PP,
+        .Pull = GPIO_NOPULL,
         .Speed = GPIO_SPEED_FREQ_HIGH,
         .Alternate = GPIO_AF7_USART2,
       },

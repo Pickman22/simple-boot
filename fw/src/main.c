@@ -11,7 +11,7 @@ int main(void)
   uart_init();
   DBG_DEBUG("system initialzed\n\r");
   while(1) {
-    gpio_toggle(gpio_led_e);
+    gpio_toggle();
     HAL_Delay(500);
   }
   return 0;

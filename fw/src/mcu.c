@@ -46,6 +46,7 @@ static void system_clock_config(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_USART2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
 }
 
