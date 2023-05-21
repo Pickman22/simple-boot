@@ -4,7 +4,6 @@ LIBS_DIR=${HOME}/opt
 
 SRCS=fw/src/main.c
 SRCS+=fw/src/mcu.c
-SRCS+=fw/src/xmodem.c
 SRCS+=fw/src/uart.c
 SRCS+=fw/src/gpio.c
 SRCS+=fw/src/printf.c
