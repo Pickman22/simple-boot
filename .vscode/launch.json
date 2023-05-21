@@ -11,7 +11,9 @@
             "servertype": "openocd",
             "device": "stm32f302x8",
             "configFiles": ["interface/stlink.cfg", "target/stm32f3x.cfg"],
-            "svdFile": "./sys/STM32F302.svd"
+            "svdFile": "./sys/STM32F302.svd",
+            "armToolchainPath": "/usr/bin/",
+            "gdbPath": "/usr/bin/arm-none-eabi-gdb-py",
         }
     ]
 }
