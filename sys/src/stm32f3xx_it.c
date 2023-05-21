@@ -1,4 +1,5 @@
 #include "stm32f3xx_it.h"
+#include <assert.h>
 
 extern void uart_isr_cb(void);
 extern void uart_rx_dma_isr_cb(void);
@@ -30,6 +31,7 @@ void NMI_Handler(void) {}
 void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
+  assert(0);
   while (1) {}
 }
 
