@@ -28,7 +28,6 @@ static uart_data_t uart_rx_data;
 
 static void uart_isr_idle_cb(void);
 static void enable_uart_dma_isr(void);
-static void disable_uart_dma_isr(void);
 static void dma_config(void);
 static void dma_rx_cplt_cb(DMA_HandleTypeDef* dma);
 static void dma_rx_half_cplt_cb(DMA_HandleTypeDef* dma);
@@ -171,13 +170,6 @@ static void enable_uart_dma_isr(void)
   HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
   HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
   HAL_NVIC_EnableIRQ(USART2_IRQn);
-}
-
-static void disable_uart_dma_isr(void)
-{
-  HAL_NVIC_DisableIRQ(DMA1_Channel7_IRQn);
-  HAL_NVIC_DisableIRQ(DMA1_Channel6_IRQn);
-  HAL_NVIC_DisableIRQ(USART2_IRQn);
 }
 
 static void dma_config(void)
