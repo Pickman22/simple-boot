@@ -22,6 +22,7 @@ HAL_SRCS+=hal/src/stm32f3xx_hal_uart.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_uart_ex.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_dma.c
 HAL_SRCS+=hal/src/stm32f3xx_hal_flash.c
+HAL_SRCS+=hal/src/stm32f3xx_hal_flash_ex.c
 
 INC_DIRS+=./sys/inc
 INC_DIRS+=./hw/inc
