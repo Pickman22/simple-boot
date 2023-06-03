@@ -1,4 +1,4 @@
-PROJ_NAME=base
+PROJ_NAME=appl
 
 LIBS_DIR=${HOME}/opt
 
@@ -109,7 +109,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 flash:
-	st-flash write $(BUILD_DIR)/$(PROJ_NAME).bin 0x8000000
+	st-flash write $(BUILD_DIR)/$(PROJ_NAME).bin 0x8008000
 
 stlink:
 	st-util -p4242

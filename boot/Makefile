@@ -1,4 +1,4 @@
-PROJ_NAME=base
+PROJ_NAME=boot
 
 LIBS_DIR=${HOME}/opt
 
