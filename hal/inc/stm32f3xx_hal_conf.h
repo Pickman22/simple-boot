@@ -57,7 +57,7 @@
 #define HAL_CORTEX_MODULE_ENABLED
 // #define HAL_CRC_MODULE_ENABLED
 // #define HAL_DAC_MODULE_ENABLED
- #define HAL_DMA_MODULE_ENABLED
+#define HAL_DMA_MODULE_ENABLED
 #define HAL_FLASH_MODULE_ENABLED
 // #define HAL_SRAM_MODULE_ENABLED
 // #define HAL_NOR_MODULE_ENABLED
@@ -80,7 +80,7 @@
 // #define HAL_SPI_MODULE_ENABLED
 #define HAL_TIM_MODULE_ENABLED
 // #define HAL_TSC_MODULE_ENABLED
-// #define HAL_UART_MODULE_ENABLED
+#define HAL_UART_MODULE_ENABLED
 // #define HAL_USART_MODULE_ENABLED
 // #define HAL_WWDG_MODULE_ENABLED
 
@@ -161,7 +161,10 @@
   */     
 #define  VDD_VALUE                    (3300U) /*!< Value of VDD in mv */
 #define  TICK_INT_PRIORITY            ((uint32_t)(1U<<__NVIC_PRIO_BITS) - 1U)   /*!< tick interrupt priority (lowest by default) */
+#ifndef USE_RTOS
 #define  USE_RTOS                     0U
+#endif
+
 #define  PREFETCH_ENABLE              1U
 #define  INSTRUCTION_CACHE_ENABLE     0U
 #define  DATA_CACHE_ENABLE            0U

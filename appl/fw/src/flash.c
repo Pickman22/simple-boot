@@ -43,7 +43,7 @@
 #define FLASH_LAST_PAGE (31u)
 #define FLASH_PAGE_N(n) (FLASH_START + ((n) * FLASH_PAGE_SIZE))
 
-static uint32_t flash_ram_buff[FLASH_PAGE_SIZE] = {0};
+// static uint32_t flash_ram_buff[FLASH_PAGE_SIZE] = {0};
 
 STATIC_FUNC uint32_t flash_page_to_phys_address(flash_page_t page_num) {
   uint32_t addr = 0;
@@ -86,9 +86,9 @@ STATIC_FUNC bool flash_phys_address_range_and_aligment_is_ok(uint32_t addr, size
   return range_ok && alingment_ok;
 }
 
-STATIC_FUNC bool flash_is_erased(uint32_t addr, size_t len) {
-  return false;
-}
+// STATIC_FUNC bool flash_is_erased(uint32_t addr, size_t len) {
+//   return false;
+// }
 
 STATIC_FUNC flash_err_t flash_unlock(void) {
   flash_err_t ret = flash_err;
