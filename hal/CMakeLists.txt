@@ -2,8 +2,7 @@ set(STM32_HAL_LIB_NAME STM32_HAL)
 
 set(HAL_INCLUDE_DIR
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
-    ${CMAKE_CURRENT_SOURCE_DIR}/inc/Legacy
-)
+    ${CMAKE_CURRENT_SOURCE_DIR}/inc/Legacy)
 
 add_library(${STM32_HAL_LIB_NAME} STATIC
     src/stm32f3xx_hal.c
@@ -15,23 +14,21 @@ add_library(${STM32_HAL_LIB_NAME} STATIC
     src/stm32f3xx_hal_adc_ex.c
     src/stm32f3xx_hal_dma.c
     src/stm32f3xx_hal_uart.c
-    src/stm32f3xx_hal_uart_ex.c
-)
+    src/stm32f3xx_hal_uart_ex.c)
 
 target_include_directories(${STM32_HAL_LIB_NAME} PUBLIC
     ./inc
     ./inc/Legacy
-    ./../sys/inc
-)
+    ./../sys/inc)
 
 target_compile_options(${STM32_HAL_LIB_NAME} PRIVATE
     ${CPU_PARAMETERS}
     ${COMMON_COMPILE_OPTS}
-    $<$<CONFIG:Debug>:-Og -g3 -ggdb>
-    $<$<CONFIG:Release>:-Os>
+    -Wundef
+    -fno-common
+    -Wno-unused-parameter
 )
 
 target_compile_definitions(${STM32_HAL_LIB_NAME} PRIVATE
     ${HAL_USE_DEFINES}
-    ${MCU_MODEL}
-)
+    ${MCU_MODEL})
