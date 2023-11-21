@@ -29,6 +29,9 @@ target_compile_options(${STM32_HAL_LIB_NAME} PRIVATE
     -Wno-unused-parameter
 )
 
-target_compile_definitions(${STM32_HAL_LIB_NAME} PRIVATE
-    ${HAL_USE_DEFINES}
+target_compile_definitions(${STM32_HAL_LIB_NAME} PUBLIC
+    USE_HAL_TIM_REGISTER_CALLBACKS=0
+    USE_HAL_ADC_REGISTER_CALLBACKS=0
+    USE_HAL_UART_REGISTER_CALLBACKS=0
+    USE_RTOS=0
     ${MCU_MODEL})

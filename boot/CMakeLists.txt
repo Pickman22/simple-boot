@@ -16,7 +16,6 @@ target_compile_options(${BOOT_EXE} PRIVATE
 
 target_compile_definitions(${BOOT_EXE} PRIVATE
     ${MCU_MODEL}
-    ${HAL_USE_DEFINES}
     STATIC_FUNC=static
     $<$<CONFIG:Debug>:DEBUG>)
 
@@ -26,17 +25,8 @@ target_link_options(${BOOT_EXE} PRIVATE
     -T${CMAKE_CURRENT_SOURCE_DIR}/linker/stm32f30_flash.ld
     LINKER:-Map,${CMAKE_CURRENT_BINARY_DIR}/${BOOT_EXE}.map)
 
-set_target_properties(${BOOT_EXE} PROPERTIES
-    SUFFIX .elf)
-
-set_target_properties(${BOOT_EXE} PROPERTIES
-    ADDITIONAL_CLEAN_FILES
-    "${APP_EXE}.map;${APP_EXE}.bin;${APP_EXE}.hex")
-
 target_include_directories(${BOOT_EXE} PRIVATE
     fw/inc)
 
-add_custom_command(TARGET ${BOOT_EXE} POST_BUILD
-    COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${BOOT_EXE}>
-    COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${BOOT_EXE}> ${BOOT_EXE}.hex
-    COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${BOOT_EXE}> ${BOOT_EXE}.bin)
+generate_output_binaries(${BOOT_EXE})
+clean_output_binaries(${BOOT_EXE})
