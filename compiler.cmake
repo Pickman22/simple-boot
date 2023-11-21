@@ -2,12 +2,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION ARM)
 
 set(TOOLCHAIN_PREFIX arm-none-eabi-)
-set(COMPILE_FLAGS
-    "-fdata-sections -ffunction-sections \
-    --specs=nano.specs -Wl,--gc-sections"
-)
-
-set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc ${COMPILE_FLAGS})
+set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_SIZE ${TOOLCHAIN_PREFIX}size)
 set(CMAKE_OBJCOPY ${TOOLCHAIN_PREFIX}objcopy)
