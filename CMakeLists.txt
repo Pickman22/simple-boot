@@ -16,8 +16,7 @@ set(CPU_PARAMETERS
     -mcpu=cortex-m4
     -mthumb
     -mfpu=fpv4-sp-d16
-    -mfloat-abi=hard
-    --specs=nosys.specs)
+    -mfloat-abi=hard)
 
 set(COMMON_COMPILE_OPTS
     -Wall
@@ -29,14 +28,15 @@ set(COMMON_COMPILE_OPTS
     -Wformat-truncation
     -ffunction-sections
     -fdata-sections
-    $<$<CONFIG:Debug>:-Og -g3 -ggdb>
-    $<$<CONFIG:Release>:-Og -g3>)
+    -fno-math-errno
+    -fsingle-precision-constant
+    -Og)
 
 set(COMMON_LINK_OPTS
     LINKER:--gc-sections
     LINKER:--print-memory-usage
-    --specs=nosys.specs
-    -lc)
+    --specs=nano.specs
+    --specs=nosys.specs)
 
 set(APP_EXE simple-boot-app)
 set(BOOT_EXE simple-boot-boot)
